@@ -22,7 +22,7 @@ auto main() -> int
     int testNum;
     std::cin >> testNum;
 
-    while (testNum--) {
+    while ((testNum--) != 0) {
         std::cin >> n;
         for (int i = 0; i < n; i++) // 二次函数可能退化为一次
             std::cin >> co[i][0] >> co[i][1] >> co[i][2];

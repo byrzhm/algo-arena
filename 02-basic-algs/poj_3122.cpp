@@ -15,7 +15,7 @@ piecheck(int n, int m, double target)
 {
     int num = 0;
     for (int i = 0; i < n; i++)
-        num += int(area[i]/target);
+        num += static_cast<int>(area[i]/target);
     
     return num >= m;
 }
@@ -27,7 +27,7 @@ main()
     int n, m;
     std::cin >> testNum;
 
-    while (testNum--) {
+    while ((testNum--) != 0) {
         double left, right;
         double max = -1;
         std::cin >> n >> m;

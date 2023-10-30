@@ -40,7 +40,7 @@ main()
 
     st_init();
 
-    while (m--) {
+    while ((m--) != 0) {
         int left, right;
         std::cin >> left >> right;
         std::cout << st_query(left - 1, right - 1) << " ";

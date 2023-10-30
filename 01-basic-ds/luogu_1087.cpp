@@ -34,6 +34,6 @@ main()
     std::cin >> n;
     std::cin >> s;
 
-    postorder(0, int(pow(2, n)));
+    postorder(0, static_cast<int>(pow(2, n)));
     std::cout << std::endl;
 }

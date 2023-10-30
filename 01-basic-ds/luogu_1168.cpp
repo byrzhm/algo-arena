@@ -6,8 +6,8 @@ main()
     int n, t, mid;
     
     std::cin >> n;
-    std::priority_queue<int, std::vector<int>, std::greater<int>> minheap;
-    std::priority_queue<int, std::vector<int>, std::less<int>> maxheap;
+    std::priority_queue<int, std::vector<int>, std::greater<>> minheap;
+    std::priority_queue<int, std::vector<int>, std::less<>> maxheap;
     for (int i = 0; i < n; i++) {
         std::cin >> t;
 

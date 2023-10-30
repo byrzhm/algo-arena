@@ -21,7 +21,7 @@ void update(int idx, int64_t delta, int64_t *tree) {
   }
 }
 
-int64_t getsum(int idx, int64_t *tree) {
+int64_t getsum(int idx, const int64_t *tree) {
   int i = idx;
   int64_t sum = 0;
   while (i > 0) {
@@ -48,7 +48,7 @@ int main() {
     prev = curr;
   }
 
-  while (m--) {
+  while ((m--) != 0) {
     int type, x, y;
     if (scanf("%d %d %d", &type, &x, &y) != 3) {
       exit(EXIT_FAILURE);

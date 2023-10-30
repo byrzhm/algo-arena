@@ -41,7 +41,7 @@ main()
     int testNum;
     std::cin >> testNum;
 
-    while (testNum--) 
+    while ((testNum--) != 0) 
         subseq();
     
     return 0;

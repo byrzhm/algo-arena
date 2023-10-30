@@ -9,7 +9,7 @@ enum TokenType {
 struct Token {
     TokenType type;
     int lexeme;
-    Token(TokenType type = tok_int, int lexeme = 0)
+    explicit Token(TokenType type = tok_int, int lexeme = 0)
         : type(type), lexeme(lexeme) {}
 };
 
@@ -26,9 +26,10 @@ Token curtok;
 static int 
 getNextTok() {
     int ret, c;
-    if (isdigit(c = getchar())) {
+    c = getchar();
+    if (isdigit(c) != 0) {
         curtok.lexeme = c - '0';
-        while ((c = getchar()) != '.' && isdigit(c))
+        while ((c = getchar()) != '.' && (isdigit(c) != 0))
             curtok.lexeme = curtok.lexeme * 10 + (c - '0');
         curtok.type = tok_int;
         ret = tok_int;
@@ -94,7 +95,7 @@ main(int argc, char const *argv[])
                 break;
             }
             s1.pop();
-            s.push(Token(tok_int, result));
+            s.emplace(tok_int, result);
         } else {
             s.push(t);
             s1.pop();

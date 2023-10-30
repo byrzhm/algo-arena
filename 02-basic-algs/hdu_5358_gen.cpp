@@ -17,7 +17,7 @@ int
 main()
 {
     int n;
-    srandom(time(0));
+    srandom(time(nullptr));
     std::cout << 1 << std::endl;
     
     (n = static_cast<int>(RandNum() % (MAX_N - MIN_N + 1) + MIN_N));

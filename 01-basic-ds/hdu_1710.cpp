@@ -5,7 +5,7 @@
 
 struct Node {
     int left, right;
-    Node(int left = 0, int right = 0) : left(left), right(right) {}
+    explicit Node(int left = 0, int right = 0) : left(left), right(right) {}
 };
 
 void 

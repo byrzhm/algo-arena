@@ -14,8 +14,8 @@ struct Node
 void
 preorder(int i)
 {
-    if (node[i].symbol) {
-        std::cout << char(node[i].symbol);
+    if (node[i].symbol != 0) {
+        std::cout << static_cast<char>(node[i].symbol);
         preorder(node[i].left);
         preorder(node[i].right);
     }
@@ -43,7 +43,7 @@ main()
     node[0].symbol = 0;
 
     i = 1;
-    while (node[i].symbol && node[i].parent) {
+    while ((node[i].symbol != 0) && (node[i].parent != 0)) {
         i = node[i].parent;
     }
     

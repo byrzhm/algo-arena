@@ -32,7 +32,7 @@ static inline void in2post() {
         {
         case '0': case '1': case '2': case '3': case '4':
         case '5': case '6': case '7': case '8': case '9':
-            s1.push(Token(Integer, chr - '0'));
+            s1.emplace(Integer, chr - '0');
             break;
 
         case '+': case '-': case '*': case '/': case '^':
@@ -42,12 +42,12 @@ static inline void in2post() {
             else {
                 if (chr == '^') {
                     while (!s.empty() && prece[s.top()] > prece[chr]) {
-                        s1.push(Token(Operator, s.top()));
+                        s1.emplace(Operator, s.top());
                         s.pop();
                     }
                 } else {
                     while (!s.empty() && prece[s.top()] >= prece[chr]) {
-                        s1.push(Token(Operator, s.top()));
+                        s1.emplace(Operator, s.top());
                         s.pop();
                     }
                 }
@@ -61,7 +61,7 @@ static inline void in2post() {
 
         case ')':
             while (!s.empty() && s.top() != '(') {
-                s1.push(Token(Operator, s.top()));
+                s1.emplace(Operator, s.top());
                 s.pop();
             }
             if (!s.empty() && s.top() == '(')
@@ -77,7 +77,7 @@ static inline void in2post() {
     }
     while (!s.empty()) {
         assert(s.top() != '(');
-        s1.push(Token(Operator, s.top()));
+        s1.emplace(Operator, s.top());
         s.pop();
     }
 
@@ -134,17 +134,16 @@ main(int argc, char const *argv[])
                     result = lhs / rhs;
                     break;
                 case '^':
-                    result = (int)pow(lhs, rhs);
+                    result = static_cast<int>(pow(lhs, rhs));
                 default:
                     break;
                 }
-                s1.push(Token(Integer, result));
+                s1.emplace(Integer, result);
                 s2.pop();
                 break;
-            } else {
-                s1.push(t);
-                s2.pop();
-            }
+            }   
+            s1.push(t);
+            s2.pop();
         }
 
         printout();

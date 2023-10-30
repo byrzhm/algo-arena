@@ -6,7 +6,7 @@ main()
 {
     int n, m, num, ans;
     std::string input;
-    std::priority_queue<int, std::vector<int>, std::greater<int>> q;
+    std::priority_queue<int, std::vector<int>, std::greater<>> q;
     std::cin >> n;
 
     for (int i = 0; i < n; i++) {

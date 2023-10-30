@@ -9,7 +9,7 @@ getnum(int64_t& num)
     int idx = 0;
     buf[idx++] = chr;
     
-    while (isdigit(chr = getchar()))
+    while (isdigit(chr = getchar()) != 0)
         buf[idx++] = chr;
     buf[idx] = 0;
     num = atoi(buf);
@@ -23,7 +23,7 @@ main(int argc, char const *argv[])
     
     chr = getchar();
     while (chr != '\n') {
-        if (isdigit(chr)) {
+        if (isdigit(chr) != 0) {
             getnum(num);
             s.push(num);
         } else if (chr == '*') {

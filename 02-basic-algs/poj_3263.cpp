@@ -14,7 +14,7 @@ int main() {
     height[0] = max_height;
     // height[m_idx] = max_height;
 
-    while (lineno--) {
+    while ((lineno--) != 0) {
         // cow_a sees cow_b
         // cow_between_ab < height[cow_a] <= height[cow_b]
         int cow_a, cow_b;

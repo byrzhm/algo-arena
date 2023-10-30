@@ -48,7 +48,7 @@ main()
             exit(-1);
         }
         
-        if (hash[x % HSIZE])
+        if (hash[x % HSIZE] != 0)
             continue;
 
         cnt++;

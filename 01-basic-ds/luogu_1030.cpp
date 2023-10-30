@@ -3,7 +3,7 @@
 void
 prestr(const std::string& instr, const std::string&postr)
 {
-    if (instr.size() > 0) {
+    if (!instr.empty()) {
         std::cout << postr.back();
         int pos = instr.find(postr.back());
         prestr(instr.substr(0, pos), postr.substr(0, pos));

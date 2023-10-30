@@ -12,7 +12,7 @@ main()
     int64_t s, sum, min, max, len;
     std::cin >> testNum;
 
-    while (testNum--) {
+    while ((testNum--) != 0) {
         std::cin >> n;
         for (i = 1; i <= n; i++) {
             std::cin >> sumto[i];

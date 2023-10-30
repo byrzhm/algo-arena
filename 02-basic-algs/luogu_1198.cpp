@@ -42,7 +42,7 @@ main()
     int x;
     std::cin >> opnum >> mod;
 
-    while (opnum--) {
+    while ((opnum--) != 0) {
         std::cin >> op >> x;
         if (op == 'A') {
             st_append(x);

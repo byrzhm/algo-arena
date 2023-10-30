@@ -47,7 +47,7 @@ getans(int x)
     // 从最大的 i 开始找: 2^i = MAX
     for (int i = log2(MAX); i >= 0; i--) { 
         int pos = go[cur][i];
-        if (pos && w[pos].end < len) {
+        if ((pos != 0) && w[pos].end < len) {
             ans += 1 << i;
             cur = pos;
         }

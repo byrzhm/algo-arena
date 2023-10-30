@@ -25,7 +25,7 @@ isSymmetric(const std::vector<TreeNode>& tree, int index, int& nodeNum)
                 dq.pop_back();
 
                 if (tree[l].left != 0 && tree[l].right != 0) {
-                    if (!(tree[r].left != 0 && tree[r].right != 0)) {
+                    if (tree[r].left == 0 || tree[r].right == 0) {
                         nodeNum = -1;
                         break;
                     }
@@ -34,21 +34,21 @@ isSymmetric(const std::vector<TreeNode>& tree, int index, int& nodeNum)
                     dq.push_back(tree[r].left);
                     dq.push_back(tree[r].right);
                 } else if (tree[l].left != 0 && tree[l].right == 0) {
-                    if (!(tree[r].left == 0 && tree[r].right != 0)) {
+                    if (tree[r].left != 0 || tree[r].right == 0) {
                         nodeNum = -1;
                         break;
                     }
                     dq.push_front(tree[l].left);
                     dq.push_back(tree[r].right);
                 } else if (tree[l].left == 0 && tree[l].right != 0) {
-                    if (!(tree[r].left != 0 && tree[r].right == 0)) {
+                    if (tree[r].left == 0 || tree[r].right != 0) {
                         nodeNum = -1;
                         break;
                     }
                     dq.push_front(tree[l].right);
                     dq.push_back(tree[r].left);
                 } else if (tree[l].left == 0 && tree[l].right == 0) {
-                    if (!(tree[r].left == 0 && tree[r].right == 0)) {
+                    if (tree[r].left != 0 || tree[r].right != 0) {
                         nodeNum = -1;
                         break;
                     }
@@ -97,9 +97,9 @@ main()
             continue;
         }
 
-        if (tree[idx].left)
+        if (tree[idx].left != 0)
             q.push(tree[idx].left);
-        if (tree[idx].right)
+        if (tree[idx].right != 0)
             q.push(tree[idx].right);
     }
 

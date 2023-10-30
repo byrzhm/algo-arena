@@ -8,7 +8,7 @@ struct Edge
     // int from;
     int to;
     int64_t weight;
-    Edge(int to = 0, int64_t weight = INF) :
+    explicit Edge(int to = 0, int64_t weight = INF) :
         to(to), weight(weight) {}
 };
 
@@ -30,10 +30,10 @@ dijkstra(int n, int src, int dst, std::vector<int>& path)
     /// first is weight, second is dest
     std::priority_queue<Edge, 
         std::vector<Edge>, 
-        std::greater<Edge>> q;
+        std::greater<>> q;
 
     for (int i = 1; i <= n; i++)
-        q.push({i, dist[i]});
+        q.emplace(i, dist[i]);
     
     
     while (!q.empty()) {
@@ -52,7 +52,7 @@ dijkstra(int n, int src, int dst, std::vector<int>& path)
             if (dist[d.to] > e.weight + d.weight) {
                 dist[d.to] = e.weight + d.weight;
                 trace[d.to] = e.to;
-                q.push({d.to, dist[d.to]});
+                q.emplace(d.to, dist[d.to]);
             }
         }
     }
@@ -111,7 +111,8 @@ main()
     int64_t length = 0;
     while (length <= b) {
         std::vector<int> path;
-        if ((length = dijkstra(n, 1, n, path)) > b) continue;
+        length = dijkstra(n, 1, n, path);
+        if (length > b) continue;
         minMax = std::min(deleteMaxVertex(n, 1, n, path), minMax);
         // printf("minMax=%d\n", minMax);
     }

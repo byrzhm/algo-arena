@@ -5,7 +5,7 @@ struct Node
 {
     int64_t weight;
     int64_t height;
-    Node(int64_t weight = 0, int64_t height = 0) :
+    explicit Node(int64_t weight = 0, int64_t height = 0) :
         weight(weight), height(height) {}
 };
 
@@ -25,12 +25,12 @@ main()
     for (int i = 0; i < n; i++)
         std::cin >> nodes[i].weight;
 
-    std::priority_queue<Node, std::vector<Node>, std::greater<Node>> 
+    std::priority_queue<Node, std::vector<Node>, std::greater<>> 
         q(nodes.begin(), nodes.end());
 
     // 补 0
     while ((q.size() - 1) % (k - 1) != 0)
-        q.push(Node());
+        q.emplace();
 
     min = 0;
     while (q.size() > 1) {
@@ -42,7 +42,7 @@ main()
             h = std::max(q.top().height, h);
             q.pop();
         }
-        q.push(Node(sum, h + 1));
+        q.emplace(sum, h + 1);
         min += sum;
     }
 
