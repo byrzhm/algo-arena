@@ -11,8 +11,8 @@
 
 struct ListNode {
     int val;
-    ListNode *next;
-    ListNode(int x) : val(x), next(NULL) {}
+    ListNode *next{};
+    explicit ListNode(int x) : val(x) {}
 };
 
 class Solution {
@@ -20,7 +20,7 @@ public:
     bool hasCycle(ListNode *head) {
         ListNode* quick, *slow;
         quick = slow = head;
-        while (quick && quick->next) {
+        while ((quick != nullptr) && (quick->next != nullptr)) {
             quick = quick->next->next;
             slow = slow->next;
             if (quick == slow)
@@ -32,25 +32,24 @@ public:
     ListNode *detectCycle(ListNode *head) {
         ListNode* quick, *slow;
         quick = slow = head;
-        while (quick && quick->next) {
+        while ((quick != nullptr) && (quick->next != nullptr)) {
             quick = quick->next->next;
             slow = slow->next;
             if (slow == quick)
                 break;
         }
 
-        if (!quick || !quick->next)
-            return NULL;
-        else {
+        if ((quick == nullptr) || (quick->next == nullptr))
+            return nullptr;
+        
+        slow = slow->next;
+        while (slow != quick && slow != head) {
             slow = slow->next;
-            while (slow != quick && slow != head) {
+            if (slow == quick && slow != head) {
                 slow = slow->next;
-                if (slow == quick && slow != head) {
-                    slow = slow->next;
-                    head = head->next;
-                }
+                head = head->next;
             }
-            return head;
         }
+        return head;
     }
 };

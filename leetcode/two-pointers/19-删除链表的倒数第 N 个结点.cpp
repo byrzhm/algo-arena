@@ -4,7 +4,7 @@ struct ListNode {
     int val;
     ListNode *next;
     ListNode() : val(0), next(nullptr) {}
-    ListNode(int x) : val(x), next(nullptr) {}
+    explicit ListNode(int x) : val(x), next(nullptr) {}
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
@@ -15,16 +15,16 @@ public:
         slow = fast = head;
         n++;
 
-        while (fast && n) {
+        while ((fast != nullptr) && (n != 0)) {
             fast = fast->next;
             n--;
         }
 
-        if (!fast && n == 1) {
+        if ((fast == nullptr) && n == 1) {
             tmp = head;
             head = head->next;
         } else {
-            while (fast) {
+            while (fast != nullptr) {
                 fast = fast->next;
                 slow = slow->next;
             }

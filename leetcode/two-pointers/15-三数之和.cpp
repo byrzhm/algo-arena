@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
-using namespace std;
+using std::vector;
+using std::sort;
 
 class Solution {
 public:

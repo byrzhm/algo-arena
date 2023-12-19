@@ -2,8 +2,8 @@
 
 struct ListNode {
     int val;
-    ListNode *next;
-    ListNode(int x) : val(x), next(NULL) {}
+    ListNode *next{};
+    explicit ListNode(int x) : val(x) {}
 };
 
 class Solution {
@@ -12,7 +12,7 @@ public:
         int cnt = 0;
         ListNode *slow, *fast;
         slow = fast = head;
-        while (fast) {
+        while (fast != nullptr) {
             if (cnt < k) {
                 cnt++;
                 fast = fast->next;

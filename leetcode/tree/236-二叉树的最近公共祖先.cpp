@@ -1,42 +1,42 @@
 // lowest common ancestor of a binary tree
 #include <bits/stdc++.h>
-using namespace std;
 
 struct TreeNode {
     int val;
-    TreeNode *left;
-    TreeNode *right;
-    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+    TreeNode *left{};
+    TreeNode *right{};
+    explicit TreeNode(int x) : val(x) {}
 };
 
 class Solution {
-    unordered_map<int, TreeNode*> fa;
-    unordered_map<int, bool> vis;
-public:
+    std::unordered_map<int, TreeNode *> fa;
+    std::unordered_map<int, bool> vis;
+
+   public:
     void dfs(TreeNode* root) {
-        if (root->left) {
+        if (root->left != nullptr) {
             fa[root->left->val] = root;
             dfs(root->left);
         }
-        if (root->right) {
+        if (root->right != nullptr) {
             fa[root->right->val] = root;
             dfs(root->right);
         }
     }
 
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        fa[root->val] = NULL;
+        fa[root->val] = nullptr;
         dfs(root);
 
-        while (p != NULL) {
+        while (p != nullptr) {
             vis[p->val] = true;
             p = fa[p->val];
         }
 
-        while (q != NULL) {
+        while (q != nullptr) {
             if (vis[q->val]) return q;
             q = fa[q->val];
         }
-        return NULL;
+        return nullptr;
     }
 };
