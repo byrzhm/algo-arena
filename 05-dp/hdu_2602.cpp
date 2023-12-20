@@ -25,7 +25,7 @@ main()
     int testNum;
     std::cin >> testNum;
 
-    while (testNum--) {
+    while ((testNum--) != 0) {
         int n, v;
         std::cin >> n >> v;
 
