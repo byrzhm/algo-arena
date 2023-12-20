@@ -10,7 +10,7 @@ public:
   }
 
   void Backtracking(int step) {
-    if (step == positions_.size()) {
+    if (step == n_) {
       AppendSln();
     } else {
       for (int i = 0; i < n_; i++) {
@@ -24,7 +24,7 @@ public:
 
   bool IsValid(int step) {
     for (int i = 0; i < step; i++) {
-      if (positions_[step] == positions_[i] || std::abs(step - i) == std::abs(positions_[step] - positions_[i])) {
+      if (positions_[step] == positions_[i] || (step - i) == std::abs(positions_[step] - positions_[i])) {
         return false;
       }
     }
