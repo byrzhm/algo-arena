@@ -13,7 +13,7 @@ main()
 {
     int n, k;
 
-    srandom(time(0));
+    srandom(time(nullptr));
 
     k = random() % (MAX - MIN + 1) + MIN;
     n = random() % (MAX - k + 1) + k;
