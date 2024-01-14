@@ -1,10 +1,26 @@
+# 忽略无后缀的可执行文件
 *
 !*/
 !*.*
-*.out
+
+# 忽略后缀为txt, out, in的文件
+# 一般用作重定向输入输出
 *.txt
+*.out
 *.in
+
+# 不追踪python脚本以及shell脚本
 *.py
 *.sh
+
+# 忽略_开头的文件
 _*
+
+# vscode的cph插件自动产生的文件夹
 .cph/
+
+# java
+*.class
+
+# See https://www.coursera.org/learn/algorithms-part1/programming/37IH3/hello-world
+algs4-princeton/helloworld/
