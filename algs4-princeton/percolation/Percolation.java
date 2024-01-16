@@ -3,7 +3,7 @@ import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 
 public class Percolation {
 
-    private boolean grid[];
+    private boolean[] grid;
     private int size;
     private int openCount;
     private int topIndex;
@@ -17,6 +17,7 @@ public class Percolation {
             throw new IllegalArgumentException("n is not a positive integer");
         }
         size = n;
+        openCount = 0;
         topIndex = 0;
         bottomIndex = n * n + 1;
         
@@ -34,37 +35,40 @@ public class Percolation {
         if (row < 1 || row > size || col < 1 || col > size) {
             throw new IllegalArgumentException("Out of bound");
         }
-        ++openCount;
 
-        grid[indexOf(row, col)] = true;
+        if (!isOpen(row, col)) {
+            ++openCount;
 
-        if (row == 1) {
-            connectUF.union(indexOf(row, col), topIndex);
-            fullUF.union(indexOf(row, col), topIndex);
-        }
+            grid[indexOf(row, col)] = true;
 
-        if (row == size) {
-            connectUF.union(indexOf(row, col), bottomIndex);
-        }
+            if (row == 1) {
+                connectUF.union(indexOf(row, col), topIndex);
+                fullUF.union(indexOf(row, col), topIndex);
+            }
 
-        if (row > 1 && isOpen(row - 1, col)) {
-            connectUF.union(indexOf(row, col), indexOf(row - 1, col));
-            fullUF.union(indexOf(row, col), indexOf(row - 1, col));
-        }
+            if (row == size) {
+                connectUF.union(indexOf(row, col), bottomIndex);
+            }
 
-        if (row < size && isOpen(row + 1, col)) {
-            connectUF.union(indexOf(row, col), indexOf(row + 1, col));
-            fullUF.union(indexOf(row, col), indexOf(row + 1, col));
-        }
+            if (row > 1 && isOpen(row - 1, col)) {
+                connectUF.union(indexOf(row, col), indexOf(row - 1, col));
+                fullUF.union(indexOf(row, col), indexOf(row - 1, col));
+            }
 
-        if (col > 1 && isOpen(row, col - 1)) {
-            connectUF.union(indexOf(row, col), indexOf(row, col - 1));
-            fullUF.union(indexOf(row, col), indexOf(row, col - 1));
-        }
+            if (row < size && isOpen(row + 1, col)) {
+                connectUF.union(indexOf(row, col), indexOf(row + 1, col));
+                fullUF.union(indexOf(row, col), indexOf(row + 1, col));
+            }
 
-        if (col < size && isOpen(row, col + 1)) {
-            connectUF.union(indexOf(row, col), indexOf(row, col + 1));
-            fullUF.union(indexOf(row, col), indexOf(row, col + 1));
+            if (col > 1 && isOpen(row, col - 1)) {
+                connectUF.union(indexOf(row, col), indexOf(row, col - 1));
+                fullUF.union(indexOf(row, col), indexOf(row, col - 1));
+            }
+
+            if (col < size && isOpen(row, col + 1)) {
+                connectUF.union(indexOf(row, col), indexOf(row, col + 1));
+                fullUF.union(indexOf(row, col), indexOf(row, col + 1));
+            }
         }
     }
 
@@ -102,5 +106,6 @@ public class Percolation {
             p.open(i, 1);
         }
         StdOut.println(p.percolates());
+        StdOut.println(p.numberOfOpenSites());
     }
 }
