@@ -9,9 +9,9 @@
 *.out
 *.in
 
-# 不追踪python脚本以及shell脚本
-*.py
+# 不追踪shell脚本, 以及bat脚本
 *.sh
+*.bat
 
 # 忽略_开头的文件
 _*
