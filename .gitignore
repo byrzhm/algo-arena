@@ -25,3 +25,6 @@ _*
 # See https://www.coursera.org/learn/algorithms-part1/programming/37IH3/hello-world
 algs4-princeton/helloworld/
 *.zip
+
+# shell problem
+!shell/*.sh
