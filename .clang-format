@@ -1,5 +1,5 @@
 # public, protected, private 修饰符对齐
-AccessModifierOffset: 0
+# AccessModifierOffset: 2
 
 # 长函数调用时，参数对齐, 括号形式
 # someLongFunction(
@@ -127,7 +127,7 @@ IndentGotoLabels: false
 #   #endif
 # #endif
 IndentPPDirectives: BeforeHash
-IndentAccessModifiers: true
+# IndentAccessModifiers: true
 IndentWidth: 2
 KeepEmptyLinesAtTheStartOfBlocks: false
 MaxEmptyLinesToKeep: 3
