@@ -28,3 +28,6 @@ algs4-princeton/helloworld/
 
 # shell problem
 !shell/*.sh
+
+# vscode
+.vscode/
