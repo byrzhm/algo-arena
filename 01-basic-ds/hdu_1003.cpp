@@ -2,8 +2,8 @@
 
 #define DP
 
-// Method 1: gready algorithm
-#ifdef GREADY
+// Method 1: greedy algorithm
+#ifdef GREEDY
 int
 _main()
 {
