@@ -3,7 +3,7 @@
     "code-runner.runInTerminal": true,
     "code-runner.saveFileBeforeRun": true,
     "code-runner.executorMap": {
-        "cpp": "cd $dir && g++ -ggdb -fsanitize=address -Wall -Wextra -Werror -Wno-sign-compare $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+        "cpp": "cd $dir && clang++ -ggdb -fsanitize=address -Wall -Wextra -Werror -Wno-sign-compare $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
         "python": "python -u",
         "java": "cd $dir && javac-algs4 $fileName && java-algs4 $fileNameWithoutExt < input.txt",
     },
