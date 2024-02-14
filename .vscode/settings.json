@@ -15,4 +15,5 @@
         "java": false,
         "python": false,
     },
+    "clangd.arguments": []
 }
