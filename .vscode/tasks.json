@@ -42,6 +42,20 @@
             ]
         },
         {
+            "label": "gtest run",
+            "type": "shell",
+            "command": "${fileDirname}/${fileBasenameNoExtension}",
+            "args": [],
+            "group": {
+                "kind": "none",
+            },
+            "dependsOn": [
+                "gtest build"
+            ],
+            "dependsOrder": "sequence",
+            "problemMatcher": []
+        },
+        {
             "label": "benchmark build",
             "type": "shell",
             "command": "g++",
