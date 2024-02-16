@@ -63,6 +63,15 @@ for (int i = 0; i < 10; ++i) {
   }
 }
 
+TEST(BSTTest, shapeTest) {
+  BST<int, int> tree;
+
+  for (int i = 0; i < 100; ++i) {
+    tree.put(i, i);
+  }
+
+  EXPECT_TRUE(tree.rightLinear());
+}
 
 int main(int argc, char *argv[])
 {

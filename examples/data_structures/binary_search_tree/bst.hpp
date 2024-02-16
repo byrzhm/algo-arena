@@ -39,11 +39,13 @@ private:
       pushAll(root);
     }
 
-    bool hasNext() const {
+    bool hasNext() const
+    {
       return !stack_.empty();
     }
 
-    std::shared_ptr<Value> next() {
+    std::shared_ptr<Value> next()
+    {
       auto tmpNode = stack_.top();
       stack_.pop();
       pushAll(tmpNode->right_);
@@ -66,7 +68,7 @@ public:
   /**
    * @brief an empty symbol table.
    */
-  BST()  = default;
+  BST() = default;
 
   /**
    * @brief true if this symbol table is empty.
@@ -174,8 +176,29 @@ public:
     return BSTIterator(root_);
   }
 
-private:
+  /**
+   * @brief true if right linear, otherwise false
+   * 
+   * @return true right linear
+   * @return false otherwise
+   */
+  bool rightLinear()
+  {
+    return rightLinear(root_);
+  }
 
+  /**
+   * @brief true if left linear, otherwise false
+   * 
+   * @return true left linear
+   * @return false otherwise
+   */
+  bool leftLinear()
+  {
+    return leftLinear(root_);
+  }
+
+private:
   std::shared_ptr<Node> put(std::shared_ptr<Node> x, const Key &key, const Value &val)
   {
     if (x == nullptr) {
@@ -269,4 +292,18 @@ private:
     return max(x->right_);
   }
 
+  bool rightLinear(std::shared_ptr<Node> x) const
+  {
+    if (x == nullptr)
+      return true;
+    return x->left_ == nullptr && rightLinear(x->right_);
+  }
+
+
+  bool leftLinear(std::shared_ptr<Node> x) const
+  {
+    if (x == nullptr)
+      return true;
+    return x->right_ == nullptr && leftLinear(x->left_);
+  }
 };
