@@ -62,99 +62,6 @@ private:
     std::stack<std::shared_ptr<Node>> stack_;
   };
 
-  std::shared_ptr<Node> put(std::shared_ptr<Node> x, const Key &key, const Value &val)
-  {
-    if (x == nullptr) {
-      return std::make_shared<Node>(key, val, 1);
-    }
-
-    if (key < x->key_)
-      x->left_ = put(x->left_, key, val);
-    else if (key > x->key_)
-      x->right_ = put(x->right_, key, val);
-    else
-      x->val_ = std::make_shared<Value>(val);
-    x->size_ = 1 + size(x->left_) + size(x->right_);
-    return x;
-  }
-
-  // return number of key-value pairs in BST rooted at x
-  int size(std::shared_ptr<Node> x)
-  {
-    if (x == nullptr)
-      return 0;
-    return x->size_;
-  }
-
-  std::shared_ptr<Value> get(std::shared_ptr<Node> x, const Key &key)
-  {
-    if (x == nullptr)
-      return nullptr;
-
-    if (key < x->key_)
-      return get(x->left_, key);
-
-    if (key > x->key_)
-      return get(x->right_, key);
-
-    return x->val_;
-  }
-
-  std::shared_ptr<Node> deleteMin(std::shared_ptr<Node> x)
-  {
-    if (x->left_ == nullptr)
-      return x->right_;
-    x->left_ = deleteMin(x->left_);
-    x->size_ = size(x->left_) + size(x->right_) + 1;
-    return x;
-  }
-
-  std::shared_ptr<Node> deleteMax(std::shared_ptr<Node> x)
-  {
-    if (x->right_ == nullptr)
-      return x->left_;
-    x->right_ = deleteMax(x->right_);
-    x->size_  = size(x->left_) + size(x->right_) + 1;
-    return x;
-  }
-
-  std::shared_ptr<Node> remove(std::shared_ptr<Node> x, const Key &key)
-  {
-    if (x == nullptr)
-      return nullptr;
-
-    if (key < x->key_)
-      x->left_ = remove(x->left_, key);
-    else if (key > x->key_)
-      x->right_ = remove(x->right_, key);
-    else {
-      if (x->right_ == nullptr)
-        return x->left_;
-      if (x->left_ == nullptr)
-        return x->right_;
-      std::shared_ptr<Node> t = x;
-      x                       = min(t->right_);
-      x->right_               = deleteMin(t->right_);
-      x->left_                = t->left_;
-    }
-    x->size = size(x->left_) + size(x->right_) + 1;
-    return x;
-  }
-
-  std::shared_ptr<Node> min(std::shared_ptr<Node> x)
-  {
-    if (x->left_ == nullptr)
-      return x;
-    return min(x->left_);
-  }
-
-  std::shared_ptr<Node> max(std::shared_ptr<Node> x)
-  {
-    if (x->right_ == nullptr)
-      return x;
-    return max(x->right_);
-  }
-
 public:
   /**
    * @brief an empty symbol table.
@@ -266,4 +173,100 @@ public:
   {
     return BSTIterator(root_);
   }
+
+private:
+
+  std::shared_ptr<Node> put(std::shared_ptr<Node> x, const Key &key, const Value &val)
+  {
+    if (x == nullptr) {
+      return std::make_shared<Node>(key, val, 1);
+    }
+
+    if (key < x->key_)
+      x->left_ = put(x->left_, key, val);
+    else if (key > x->key_)
+      x->right_ = put(x->right_, key, val);
+    else
+      x->val_ = std::make_shared<Value>(val);
+    x->size_ = 1 + size(x->left_) + size(x->right_);
+    return x;
+  }
+
+  // return number of key-value pairs in BST rooted at x
+  int size(std::shared_ptr<Node> x)
+  {
+    if (x == nullptr)
+      return 0;
+    return x->size_;
+  }
+
+  std::shared_ptr<Value> get(std::shared_ptr<Node> x, const Key &key)
+  {
+    if (x == nullptr)
+      return nullptr;
+
+    if (key < x->key_)
+      return get(x->left_, key);
+
+    if (key > x->key_)
+      return get(x->right_, key);
+
+    return x->val_;
+  }
+
+  std::shared_ptr<Node> deleteMin(std::shared_ptr<Node> x)
+  {
+    if (x->left_ == nullptr)
+      return x->right_;
+    x->left_ = deleteMin(x->left_);
+    x->size_ = size(x->left_) + size(x->right_) + 1;
+    return x;
+  }
+
+  std::shared_ptr<Node> deleteMax(std::shared_ptr<Node> x)
+  {
+    if (x->right_ == nullptr)
+      return x->left_;
+    x->right_ = deleteMax(x->right_);
+    x->size_  = size(x->left_) + size(x->right_) + 1;
+    return x;
+  }
+
+  std::shared_ptr<Node> remove(std::shared_ptr<Node> x, const Key &key)
+  {
+    if (x == nullptr)
+      return nullptr;
+
+    if (key < x->key_)
+      x->left_ = remove(x->left_, key);
+    else if (key > x->key_)
+      x->right_ = remove(x->right_, key);
+    else {
+      if (x->right_ == nullptr)
+        return x->left_;
+      if (x->left_ == nullptr)
+        return x->right_;
+      std::shared_ptr<Node> t = x;
+      x                       = min(t->right_);
+      x->right_               = deleteMin(t->right_);
+      x->left_                = t->left_;
+    }
+    x->size = size(x->left_) + size(x->right_) + 1;
+    return x;
+  }
+
+  std::shared_ptr<Node> min(std::shared_ptr<Node> x)
+  {
+    if (x->left_ == nullptr)
+      return x;
+    return min(x->left_);
+  }
+
+  std::shared_ptr<Node> max(std::shared_ptr<Node> x)
+  {
+    if (x->right_ == nullptr)
+      return x;
+    return max(x->right_);
+  }
+
 };
