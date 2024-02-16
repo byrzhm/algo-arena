@@ -176,6 +176,9 @@ public:
     return BSTIterator(root_);
   }
 
+  // height of tree (1-node tree has height 0)
+  int height() { return height(root_); }
+
   /**
    * @brief true if right linear, otherwise false
    * 
@@ -290,6 +293,13 @@ private:
     if (x->right_ == nullptr)
       return x;
     return max(x->right_);
+  }
+
+  int height(std::shared_ptr<Node> x)
+  {
+    if (x == nullptr)
+      return -1;
+    return 1 + std::max(height(x->left_), height(x->right_));
   }
 
   bool rightLinear(std::shared_ptr<Node> x) const

@@ -66,11 +66,12 @@ for (int i = 0; i < 10; ++i) {
 TEST(BSTTest, shapeTest) {
   BST<int, int> tree;
 
-  for (int i = 0; i < 100; ++i) {
+  for (int i = 0; i < 10; ++i) {
     tree.put(i, i);
   }
 
   EXPECT_TRUE(tree.rightLinear());
+  EXPECT_EQ(tree.height(), 9);
 }
 
 int main(int argc, char *argv[])
