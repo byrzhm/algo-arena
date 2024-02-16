@@ -39,7 +39,7 @@ private:
       pushAll(root);
     }
 
-    bool hasNext() {
+    bool hasNext() const {
       return !stack_.empty();
     }
 
@@ -72,7 +72,7 @@ public:
    * @brief true if this symbol table is empty.
    * @return true if this symbol table is empty; false otherwise
    */
-  bool isEmpty()
+  bool isEmpty() const
   {
     return size() == 0;
   }
@@ -81,7 +81,7 @@ public:
    * @brief the number of key-value pairs in this symbol table.
    * @return the number of key-value pairs in this symbol table
    */
-  int size()
+  int size() const
   {
     return size(root_);
   }
@@ -93,7 +93,7 @@ public:
    * @return `true` if this symbol table contains {@code key} and
    *         `false` otherwise
    */
-  bool contains(const Key &key)
+  bool contains(const Key &key) const
   {
     return get(key) != nullptr;
   }
@@ -105,7 +105,7 @@ public:
    * @return the value associated with the given key if the key is in the symbol table
    *         and `nullptr` if the key is not in the symbol table
    */
-  std::shared_ptr<Value> get(const Key &key)
+  std::shared_ptr<Value> get(const Key &key) const
   {
     return get(root_, key);
   }
@@ -154,7 +154,7 @@ public:
    *
    * @return the smallest key in the symbol table
    */
-  Key min()
+  Key min() const
   {
     return min(root_)->key_;
   }
@@ -164,12 +164,12 @@ public:
    *
    * @return the largest key in the symbol table
    */
-  Key max()
+  Key max() const
   {
     return max(root_)->key_;
   }
 
-  BSTIterator iterator()
+  BSTIterator iterator() const
   {
     return BSTIterator(root_);
   }
@@ -193,14 +193,14 @@ private:
   }
 
   // return number of key-value pairs in BST rooted at x
-  int size(std::shared_ptr<Node> x)
+  int size(std::shared_ptr<Node> x) const
   {
     if (x == nullptr)
       return 0;
     return x->size_;
   }
 
-  std::shared_ptr<Value> get(std::shared_ptr<Node> x, const Key &key)
+  std::shared_ptr<Value> get(std::shared_ptr<Node> x, const Key &key) const
   {
     if (x == nullptr)
       return nullptr;
@@ -255,14 +255,14 @@ private:
     return x;
   }
 
-  std::shared_ptr<Node> min(std::shared_ptr<Node> x)
+  std::shared_ptr<Node> min(std::shared_ptr<Node> x) const
   {
     if (x->left_ == nullptr)
       return x;
     return min(x->left_);
   }
 
-  std::shared_ptr<Node> max(std::shared_ptr<Node> x)
+  std::shared_ptr<Node> max(std::shared_ptr<Node> x) const
   {
     if (x->right_ == nullptr)
       return x;
