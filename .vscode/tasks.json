@@ -8,8 +8,10 @@
             "type": "shell",
             "command": "g++",
             "args": [
-                "-g", "${file}",
-                "-o", "${fileDirname}/${fileBasenameNoExtension}"
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}"
             ],
             "group": {
                 "kind": "build",
@@ -24,8 +26,11 @@
             "type": "shell",
             "command": "g++",
             "args": [
-                "-g", "-fsanitize=address", "${file}",
-                "-o", "${fileDirname}/${fileBasenameNoExtension}",
+                "-g",
+                "-fsanitize=address",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}",
                 "-lgtest"
             ],
             "group": {
@@ -41,8 +46,10 @@
             "type": "shell",
             "command": "g++",
             "args": [
-                "-g", "-O3", "${file}",
-                "-o", "${fileDirname}/${fileBasenameNoExtension}",
+                "-O3",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}",
                 "-lbenchmark"
             ],
             "group": {
@@ -52,6 +59,20 @@
             "problemMatcher": [
                 "$gcc"
             ]
+        },
+        {
+            "label": "benchmark run",
+            "type": "shell",
+            "command": "${fileDirname}/${fileBasenameNoExtension}",
+            "args": [],
+            "group": {
+                "kind": "none"
+            },
+            "dependsOn": [
+                "benchmark build"
+            ],
+            "dependsOrder": "sequence",
+            "problemMatcher": []
         }
     ]
 }
