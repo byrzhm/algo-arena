@@ -18,6 +18,40 @@
             "problemMatcher": [
                 "$gcc"
             ]
+        },
+        {
+            "label": "gtest build",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-g", "-fsanitize=address", "${file}",
+                "-o", "${fileDirname}/${fileBasenameNoExtension}",
+                "-lgtest"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "benchmark build",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-g", "-O3", "${file}",
+                "-o", "${fileDirname}/${fileBasenameNoExtension}",
+                "-lbenchmark"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
         }
     ]
 }
