@@ -277,7 +277,7 @@ private:
       x->right_               = deleteMin(t->right_);
       x->left_                = t->left_;
     }
-    x->size = size(x->left_) + size(x->right_) + 1;
+    x->size_ = size(x->left_) + size(x->right_) + 1;
     return x;
   }
 
