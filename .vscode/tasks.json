@@ -8,8 +8,10 @@
             "type": "shell",
             "command": "g++",
             "args": [
-                "-g", "${file}",
-                "-o", "${fileDirname}/${fileBasenameNoExtension}"
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}"
             ],
             "group": {
                 "kind": "build",
@@ -18,6 +20,73 @@
             "problemMatcher": [
                 "$gcc"
             ]
+        },
+        {
+            "label": "gtest build",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-g",
+                "-fsanitize=address",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}",
+                "-lgtest"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "gtest run",
+            "type": "shell",
+            "command": "${fileDirname}/${fileBasenameNoExtension}",
+            "args": [],
+            "group": {
+                "kind": "none",
+            },
+            "dependsOn": [
+                "gtest build"
+            ],
+            "dependsOrder": "sequence",
+            "problemMatcher": []
+        },
+        {
+            "label": "benchmark build",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-O3",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}",
+                "-lbenchmark"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "benchmark run",
+            "type": "shell",
+            "command": "${fileDirname}/${fileBasenameNoExtension}",
+            "args": [],
+            "group": {
+                "kind": "none"
+            },
+            "dependsOn": [
+                "benchmark build"
+            ],
+            "dependsOrder": "sequence",
+            "problemMatcher": []
         }
     ]
 }
