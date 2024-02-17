@@ -271,3 +271,4 @@ cython_debug/
 #.idea/
 
 Info.plist
+*.yml
