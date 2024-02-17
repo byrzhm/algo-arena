@@ -22,47 +22,9 @@
             ]
         },
         {
-            "label": "clang++ build",
-            "type": "shell",
-            "command": "clang++",
-            "args": [
-                "-g",
-                "${file}",
-                "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": false
-            },
-            "problemMatcher": [
-                "$gcc"
-            ]
-        },
-        {
             "label": "gtest build",
             "type": "shell",
             "command": "g++",
-            "args": [
-                "-g",
-                "-fsanitize=address",
-                "${file}",
-                "-o",
-                "${fileDirname}/${fileBasenameNoExtension}",
-                "-lgtest"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": false
-            },
-            "problemMatcher": [
-                "$gcc"
-            ]
-        },
-        {
-            "label": "clang++ gtest build",
-            "type": "shell",
-            "command": "clang++",
             "args": [
                 "-g",
                 "-fsanitize=address",
@@ -97,25 +59,6 @@
             "label": "benchmark build",
             "type": "shell",
             "command": "g++",
-            "args": [
-                "-O3",
-                "${file}",
-                "-o",
-                "${fileDirname}/${fileBasenameNoExtension}",
-                "-lbenchmark"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": false
-            },
-            "problemMatcher": [
-                "$gcc"
-            ]
-        },
-        {
-            "label": "clang++ benchmark build",
-            "type": "shell",
-            "command": "clang++",
             "args": [
                 "-O3",
                 "${file}",
