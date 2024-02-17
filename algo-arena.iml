@@ -8,6 +8,7 @@
       <sourceFolder url="file://$MODULE_DIR$/algs4-princeton/queues" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/algs4-princeton/8puzzle" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/algs4-princeton/particle" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/algs4-princeton/kdtree" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
