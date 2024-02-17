@@ -7,21 +7,18 @@ import edu.princeton.cs.algs4.StdOut;
 import java.awt.Color;
 
 public class KdTree {
-    private static final boolean VERTICAL = true;
-//    private static final boolean HORIZONTAL = false;
-
     private Node root;
     private int size;
 
     private static class Node {
-        private final Point2D point;
+        private final Point2D p;
+        private final RectHV r;
         private Node left;
         private Node right;
-        private final boolean orient;
 
-        public Node(Point2D p, boolean orient) {
-            point = p;
-            this.orient = orient;
+        public Node(Point2D p, RectHV r) {
+            this.p = p;
+            this.r = r;
         }
     }
 
@@ -43,106 +40,109 @@ public class KdTree {
     // add the point to the set (if it is not already in the set)
     public void insert(Point2D p) {
         if (p == null) throw new IllegalArgumentException("null argument");
-        root = insert(root, p, null);
+        root = insert(root, p, 0.0, 0.0, 1.0, 1.0, true);
     }
 
-    private Node insert(Node node, Point2D p, Node parent) {
+    private Node insert(Node node, Point2D p, double x0, double y0, double x1, double y1, boolean vertical) {
         if (node == null) {
             ++size;
-            return new Node(p, nextOrient(parent));
+            return new Node(p, new RectHV(x0, y0, x1, y1));
         }
 
-        if (node.point.equals(p)) {
-            return node;
+        if (node.p.equals(p)) return node;
+
+        if (vertical) {
+            int cmp = Double.compare(p.x(), node.p.x());
+            if (cmp < 0) node.left = insert(node.left, p, x0, y0, node.p.x(), y1, false);
+            else /* if (cmp > 0) */ node.right = insert(node.right, p, node.p.x(), y0, x1, y1, false);
+        } else {
+            int cmp = Double.compare(p.y(), node.p.y());
+            if (cmp < 0) node.left = insert(node.left, p, x0, y0, x1, node.p.y(), true);
+            else /* if (cmp > 0) */ node.right = insert(node.right, p, x0, node.p.y(), x1, y1, true);
         }
-
-        int cmp = node.orient ?
-                Double.compare(p.x(), node.point.x())
-                : Double.compare(p.y(), node.point.y());
-
-        if (cmp < 0) node.left = insert(node.left, p, node);
-        else /* if (cmp > 0) */ node.right = insert(node.right, p, node);
 
         return node;
-    }
-
-    private boolean nextOrient(Node parent) {
-        if (parent == null) return VERTICAL;
-        return !parent.orient;
     }
 
     // does the set contain point p?
     public boolean contains(Point2D p) {
         if (p == null) throw new IllegalArgumentException("null argument");
-        return contains(root, p);
+        return contains(root, p, true);
     }
 
-    private boolean contains(Node node, Point2D p) {
+    private boolean contains(Node node, Point2D p, boolean vertical) {
         if (node == null) return false;
 
-        if (node.point.equals(p)) {
+        if (node.p.equals(p)) {
             return true;
         }
 
-        int cmp = node.orient ?
-                Double.compare(p.x(), node.point.x())
-                : Double.compare(p.y(), node.point.y());
+        int cmp = vertical ?
+                Double.compare(p.x(), node.p.x())
+                : Double.compare(p.y(), node.p.y());
 
-        if (cmp < 0) return contains(node.left, p);
-        return contains(node.right, p);
+        if (cmp < 0) return contains(node.left, p, !vertical);
+        return contains(node.right, p, !vertical);
     }
 
     // draw all points to standard draw
     public void draw() {
-        draw(root, 0.0, 1.0, 0.0, 1.0);
+        draw(root, true);
     }
 
-    private void draw(Node node, double xMin, double xMax, double yMin, double yMax) {
+    private void draw(Node node, boolean vertical) {
         if (node == null) return;
 
-        Point2D p = node.point;
-        StdDraw.setPenRadius(0.01);
 
 //        StdOut.println(p + ": xMin=" + xMin + ", xMax=" + xMax + ", yMin=" + yMin + ", yMax=" + yMax);
-        if (node.orient) {
+        if (vertical) {
             StdDraw.setPenColor(Color.RED);
-            StdDraw.line(p.x(), yMin, p.x(), yMax);
-            draw(node.left, xMin, p.x(), yMin, yMax);
-            draw(node.right, p.x(), xMax, yMin, yMax);
+            StdDraw.setPenRadius();
+            StdDraw.line(node.p.x(), node.r.ymin(), node.p.x(), node.r.ymax());
+            draw(node.left, false);
+            draw(node.right, false);
         } else {
             StdDraw.setPenColor(Color.BLUE);
-            StdDraw.line(xMin, p.y(), xMax, p.y());
-            draw(node.left, xMin, xMax, yMin, p.y());
-            draw(node.right, xMin, xMax, p.y(), yMax);
+            StdDraw.setPenRadius();
+            StdDraw.line(node.r.xmin(), node.p.y(), node.r.xmax(), node.p.y());
+            draw(node.left, true);
+            draw(node.right, true);
         }
 
         StdDraw.setPenColor(Color.BLACK);
         StdDraw.setPenRadius(0.02);
-        p.draw();
+        node.p.draw();
     }
 
     // all points that are inside the rectangle (or on the boundary)
     public Iterable<Point2D> range(RectHV rect) {
         if (rect == null) throw new IllegalArgumentException("null argument");
         Queue<Point2D> queue = new Queue<>();
-        range(root, rect, queue);
+        range(root, rect, queue, true);
         return queue;
     }
 
-    private void range(Node node, RectHV rect, Queue<Point2D> queue) {
+    /**
+     * Range search. To find all points contained in a given query rectangle, start at the root
+     * and recursively search for points in both subtrees using the following pruning rule:
+     *      if the query rectangle does not intersect the rectangle corresponding to a node,
+     *      there is no need to explore that node (or its subtrees). A subtree is searched only
+     *      if it might contain a point contained in the query rectangle.
+     */
+    private void range(Node node, RectHV rect, Queue<Point2D> queue, boolean vertical) {
         if (node == null) return;
-        Point2D point = node.point;
+        Point2D point = node.p;
 
         if (rect.contains(point)) {
             queue.enqueue(point);
         }
 
-        if (node.orient) { // Vertical
-            if (rect.xmin() < point.x()) range(node.left, rect, queue);
-            if (rect.xmax() >= point.x()) range(node.right, rect, queue);
+        if (vertical) { // Vertical
+            if (rect.xmin() < point.x()) range(node.left, rect, queue, false);
+            if (rect.xmax() >= point.x()) range(node.right, rect, queue, false);
         } else { // Horizontal
-            if (rect.ymin() < point.y()) range(node.left, rect, queue);
-            if (rect.ymax() >= point.y()) range(node.right, rect, queue);
+            if (rect.ymin() < point.y()) range(node.left, rect, queue, true);
+            if (rect.ymax() >= point.y()) range(node.right, rect, queue, true);
         }
     }
 
@@ -150,62 +150,54 @@ public class KdTree {
     public Point2D nearest(Point2D p) {
         if (p == null) throw new IllegalArgumentException("null argument");
         if (root == null) return null;
-        return nearest(root, p);
+        return nearest(root, p, root.p, true);
     }
 
-    private Point2D nearest(Node node, Point2D p) {
-        Point2D point = node.point;
-        if (node.left == null && node.right == null) {
-            return point;
-        }
+    /**
+     * Nearest-neighbor search.
+     *   To find the closest point to a given query point, start at the root and recursively
+     *   search in both subtrees using the following pruning rule:
+     *      if the closest point discovered so far is closer than the distance between the
+     *      query point and the rectangle corresponding to a node, there is no need to explore
+     *      that node (or its subtrees). That is, search a node only if it might contain a
+     *      point that is closer than the best one found so far.
+     *   The effectiveness of the pruning rule depend on quickly finding a nearby point. To do this,
+     *   organize the recursive method so that when there are two possible subtrees to go down,
+     *   you always choose the subtree that is on the same side of the splitting line as the query
+     *   point as the first subtree to explore—the closest point found while exploring the first
+     *   subtree may enable pruning of the second subtree.
+     */
+    private Point2D nearest(Node node, Point2D p, Point2D c, boolean vertical) {
+        Point2D closest = c;
+        if (node == null) return closest;
 
-        if (node.left == null || node.right == null) {
-            Node n1 = node.left == null ? node.right : node.left;
-            Point2D p1 = nearest(n1, p);
-            int cmp = p.distanceToOrder().compare(point, p1);
-            if (cmp < 0) return point;
-            return p1;
-        }
+        if (node.p.distanceSquaredTo(p) < closest.distanceSquaredTo(p))
+            closest = node.p;
 
-        Point2D leftPoint = node.left.point;
-        Point2D rightPoint = node.right.point;
-
-        double dist = p.distanceSquaredTo(point);
-        double leftDist = p.distanceSquaredTo(leftPoint);
-        double rightDist = p.distanceSquaredTo(rightPoint);
-
-        if (node.orient) {
-            double distToSplitLine = p.distanceSquaredTo(new Point2D(point.x(), p.y()));
-            if (leftDist < dist && leftDist < distToSplitLine) { // left
-                return nearest(node.left, p);
+        /*
+         *  if the closest point discovered so far is closer than the distance between the query
+         *  point and the rectangle corresponding to a node, there is no need to explore that node.
+         *
+         *  That is, search a node only if it might contain a point that is closer than the best
+         *  one found so far.
+         */
+        if (node.r.distanceSquaredTo(p) < closest.distanceSquaredTo(p)) {
+            Node near;
+            Node far;
+            if ((vertical && (p.x() < node.p.x())) || (!vertical && (p.y() < node.p.y()))) {
+                near = node.left;
+                far = node.right;
+            }
+            else {
+                near = node.right;
+                far = node.left;
             }
 
-            if (rightDist < dist && rightDist < distToSplitLine) { // right
-                return nearest(node.right, p);
-            }
+            closest = nearest(near, p, closest, !vertical); // same side first
+            closest = nearest(far, p, closest, !vertical);
         }
 
-        if (!node.orient) {
-            double distToSplitLine = p.distanceSquaredTo(new Point2D(p.x(), point.y()));
-            if (leftDist < dist && leftDist < distToSplitLine) { // bottom
-                return nearest(node.left, p);
-            }
-
-            if (rightDist < dist && rightDist < distToSplitLine) { // up
-                return nearest(node.right, p);
-            }
-        }
-
-        Point2D leftNearest = nearest(node.left, p);
-        Point2D rightNearest = nearest(node.right, p);
-        Point2D leftRightNearest = nearest(p, leftNearest, rightNearest);
-        return nearest(p, leftRightNearest, point);
-    }
-
-    private Point2D nearest(Point2D origin, Point2D p1, Point2D p2) {
-        int cmp = origin.distanceToOrder().compare(p1, p2);
-        if (cmp < 0) return p1;
-        return p2;
+        return closest;
     }
 
     // unit testing of the methods (optional)
