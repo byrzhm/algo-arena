@@ -26,6 +26,7 @@
             "type": "shell",
             "command": "clang++",
             "args": [
+                "-std=c++17",
                 "-g",
                 "${file}",
                 "-o",
