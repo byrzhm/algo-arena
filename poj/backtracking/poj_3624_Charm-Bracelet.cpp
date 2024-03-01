@@ -92,6 +92,6 @@ int main() {
   std::sort(items, items + n, std::greater<>{});
 
   backtracking(0);
-  std::cout << bestv << std::endl;
+  std::cout << bestv << '\n';
   return 0;
 }
