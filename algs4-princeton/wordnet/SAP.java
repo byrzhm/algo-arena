@@ -42,6 +42,11 @@ public class SAP {
     public int length(Iterable<Integer> v, Iterable<Integer> w) {
         validateVertices(v);
         validateVertices(w);
+        int vSize = getSize(v);
+        int wSize = getSize(w);
+        if (vSize == 0 || wSize == 0) {
+            return -1;
+        }
         return breadthFirstSearch(v, w)[1];
     }
 
@@ -49,6 +54,11 @@ public class SAP {
     public int ancestor(Iterable<Integer> v, Iterable<Integer> w) {
         validateVertices(v);
         validateVertices(w);
+        int vSize = getSize(v);
+        int wSize = getSize(w);
+        if (vSize == 0 || wSize == 0) {
+            return -1;
+        }
         return breadthFirstSearch(v, w)[0];
     }
 
@@ -82,11 +92,19 @@ public class SAP {
 
     }
 
+    private int getSize(Iterable<Integer> vertices) {
+        int count = 0;
+        for (Integer v : vertices) {
+            if (v == null) throw new IllegalArgumentException("vertices contain null");
+            ++count;
+        }
+        return count;
+    }
+
     // throw an IllegalArgumentException unless {@code 0 <= v < V}
     private void validateVertex(int v) {
-        int V = G.V();
-        if (v < 0 || v >= V)
-            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V - 1));
+        if (v < 0 || v >= G.V())
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (G.V() - 1));
     }
 
     // throw an IllegalArgumentException if vertices is null, has zero vertices,
@@ -95,16 +113,12 @@ public class SAP {
         if (vertices == null) {
             throw new IllegalArgumentException("argument is null");
         }
-        int vertexCount = 0;
+
         for (Integer v : vertices) {
-            vertexCount++;
             if (v == null) {
-                throw new IllegalArgumentException("vertex is null");
+                throw new IllegalArgumentException("vertices contain null");
             }
             validateVertex(v);
-        }
-        if (vertexCount == 0) {
-            throw new IllegalArgumentException("zero vertices");
         }
     }
 
