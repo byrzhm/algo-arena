@@ -10,6 +10,7 @@
       <sourceFolder url="file://$MODULE_DIR$/algs4-princeton/particle" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/algs4-princeton/kdtree" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/algs4-princeton/wordnet" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/algs4-princeton/seam" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
