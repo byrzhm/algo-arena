@@ -302,3 +302,6 @@ Temporary Items
 .apdisk
 
 *.png
+
+build/
+!CMakeLists.txt
