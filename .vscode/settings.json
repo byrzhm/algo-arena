@@ -19,5 +19,9 @@
     "clangd.arguments": [],
     // "clangd.fallbackFlags": [
     //     "-I${env:VCPKG_ROOT}/installed/arm64-osx/include",
-    // ]
+    // ],
+    "cmake.configureSettings": {
+        "CMAKE_TOOLCHAIN_FILE": "${env:VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "YES",
+    },
 }
