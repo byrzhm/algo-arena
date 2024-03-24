@@ -1,4 +1,6 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <memory>
+#include <vector>
 
 /**
  * @brief A trie (pronounced as "try") or prefix tree is a tree data structure used to efficiently store and retrieve
