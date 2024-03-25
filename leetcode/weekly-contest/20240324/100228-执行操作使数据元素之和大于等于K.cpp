@@ -26,10 +26,7 @@ public:
     auto checkFn = [&](int times) {
       for (int i = 0; i <= times; ++i) {
         int elem = 1 + i;
-        int sum  = elem;
-        for (int j = times - i; j > 0; --j) {
-          sum += elem;
-        }
+        int sum  = elem * (times - i + 1);
         if (sum >= k)
           return true;
       }
@@ -40,14 +37,12 @@ public:
 
     while (l < r) {
       int mid = (l + r) >> 1;
-      // printf("l=%d, r=%d, mid=%d\n", l, r, mid);
       if (checkFn(mid)) {
         r = mid;
       } else {
         l = mid + 1;
       }
     }
-    // printf("l=%d, r=%d\n", l, r);
     return l;
   }
 };
