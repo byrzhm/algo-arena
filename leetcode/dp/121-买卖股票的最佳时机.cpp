@@ -1,4 +1,7 @@
-#include <bits/stdc++.h>
+/**
+ *  https://www.bilibili.com/video/BV1ho4y1W7QK/?vd_source=571900c3ae9bbfdc988accacb2feb8be
+ */
+#include <vector>
 
 class Solution
 {
