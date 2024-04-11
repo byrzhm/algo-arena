@@ -11,7 +11,7 @@ class Solution:
         
         ans = 1
 
-        def dfs(i):
+        def dfs(i): # adj 中没有父节点，如果有需要在参数里加 father 以供判断
             nonlocal ans
 
             first, second = 0, 0
