@@ -12,7 +12,7 @@ AlignArrayOfStructures: None
 # 连续的赋值语句对齐
 AlignConsecutiveAssignments: 
   Enabled: true
-  AcrossEmptyLines: true
+  AcrossEmptyLines: false
   AcrossComments: false
   AlignCompound: true
   PadOperators: true
