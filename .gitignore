@@ -13,6 +13,8 @@
 # 不追踪shell脚本, 以及bat脚本
 *.sh
 *.bat
+!scripts/*.sh
+!scripts/*.bat
 
 # 忽略_开头的文件
 _*
