@@ -4,3 +4,6 @@
 [submodule "hot100/python"]
 	path = problem-sets/leetcode-hot100/python
 	url = git@github.com:byrzhm/leetcode-hot100-python.git
+[submodule "problem-sets/algs4-princeton-cpp"]
+	path = problem-sets/algs4-princeton-cpp
+	url = git@github.com:byrzhm/algs4-princeton-cpp.git
