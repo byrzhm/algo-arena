@@ -22,3 +22,9 @@ Most of the problems come from the book [Yongjun Luo & Weibin Guo](http://www.tu
 ## FAQs
 
 - If you'd like to use `algs4.jar` in vscode, all you need to do is create a `lib` folder at the root of your workspace and move the `algs4.jar` file into it.
+
+- How to disable black formatter for specific block of code? <br>
+    Using `# fmt: off` and `# fmt: on`, more on [black documentation](https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html).
+
+- How to disable clang-format for specific block of code? <br>
+    Using `// clang-format off` and `// clang-format on`, more on [clang-format documentation](https://clang.llvm.org/docs/ClangFormatStyleOptions.html#disabling-formatting-on-a-piece-of-code).
