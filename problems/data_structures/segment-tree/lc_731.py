@@ -27,6 +27,8 @@ class MyCalendarTwo:
         return True
 
 
+# TODO: difference array
+# See https://www.geeksforgeeks.org/difference-array-range-update-query-o1/
 class MyCalendarTwo:
 
     def __init__(self):
@@ -36,17 +38,8 @@ class MyCalendarTwo:
         pass
 
 
-# TODO: 差分数组
-class MyCalendarTwo:
-
-    def __init__(self):
-        pass
-
-    def book(self, startTime: int, endTime: int) -> bool:
-        pass
-
-
-# TODO: 线段树
+# TODO: segment tree
+# See https://www.geeksforgeeks.org/segment-tree-data-structure/
 class MyCalendarTwo:
 
     def __init__(self):
