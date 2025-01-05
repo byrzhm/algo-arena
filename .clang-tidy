@@ -32,6 +32,7 @@ Checks:     '
             -readability-redundant-access-specifiers,
             -readability-isolate-declaration,
             -readability-braces-around-statements,
+            -readability-math-missing-parentheses,
             -bugprone-exception-escape,
             -modernize-use-trailing-return-type,
             -google-runtime-int
