@@ -6,6 +6,10 @@
 ## Tutorials
 
 - [线段树详解](https://lfool.github.io/LFool-Notes/algorithm/%E7%BA%BF%E6%AE%B5%E6%A0%91%E8%AF%A6%E8%A7%A3.html)
+- [Tushar Roy - Coding Made Simple/Segment Tree Range Minimum Query](https://www.youtube.com/watch?v=ZBHKZF5w4YU)
+- [Tushar Roy - Coding Made Simple/Lazy Propagation Segment Tree](https://www.youtube.com/watch?v=xuoQdt5pHj0)
+- [geeksforgeeks/Segment Tree](https://www.geeksforgeeks.org/segment-tree-data-structure/)
+
 
 ## Problems
 

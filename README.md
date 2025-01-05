@@ -19,7 +19,7 @@ Problem prefix stands for
 Most of the problems come from the book [Yongjun Luo & Weibin Guo](http://www.tup.tsinghua.edu.cn/Wap/tsxqy.aspx?id=08808001).
 
 
-## FAQs
+## FAQs & Tips
 
 - If you'd like to use `algs4.jar` in vscode, all you need to do is create a `lib` folder at the root of your workspace and move the `algs4.jar` file into it.
 
@@ -28,3 +28,8 @@ Most of the problems come from the book [Yongjun Luo & Weibin Guo](http://www.tu
 
 - How to disable clang-format for specific block of code? <br>
     Using `// clang-format off` and `// clang-format on`, more on [clang-format documentation](https://clang.llvm.org/docs/ClangFormatStyleOptions.html#disabling-formatting-on-a-piece-of-code).
+
+- Quickly search problems <br>
+    ```bash
+    find . -type f -name 'lc_307*'
+    ```
