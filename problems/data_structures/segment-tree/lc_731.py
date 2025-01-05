@@ -1,3 +1,7 @@
+from collections import defaultdict
+from typing import List
+
+
 # brute force
 class MyCalendarTwo:
 
@@ -27,28 +31,31 @@ class MyCalendarTwo:
         return True
 
 
-# TODO: difference array
-# See https://www.geeksforgeeks.org/difference-array-range-update-query-o1/
-class MyCalendarTwo:
-
-    def __init__(self):
-        pass
-
-    def book(self, startTime: int, endTime: int) -> bool:
-        pass
-
-
-# TODO: segment tree
+# segment tree
 # See https://www.geeksforgeeks.org/segment-tree-data-structure/
 class MyCalendarTwo:
 
     def __init__(self):
-        pass
+        self.tree = defaultdict(int)
+        self.lazy = defaultdict(int)
+
+    def update(self, start: int, end: int, val: int, l: int, r: int, idx: int) -> None:
+        if start > r or end < l:
+            return
+        if start <= l and r <= end:
+            self.tree[idx] += val
+            self.lazy[idx] += val
+        else:
+            mid = (l + r) >> 1
+            self.update(start, end, val, l, mid, idx * 2)
+            self.update(start, end, val, mid + 1, r, idx * 2 + 1)
+            self.tree[idx] = self.lazy[idx] + max(
+                self.tree[idx * 2], self.tree[idx * 2 + 1]
+            )
 
     def book(self, startTime: int, endTime: int) -> bool:
-        pass
-
-
-# Your MyCalendarTwo object will be instantiated and called as such:
-# obj = MyCalendarTwo()
-# param_1 = obj.book(startTime,endTime)
+        self.update(startTime, endTime - 1, 1, 0, 10**9, 1)
+        if self.tree[1] > 2:
+            self.update(startTime, endTime - 1, -1, 0, 10**9, 1)
+            return False
+        return True
