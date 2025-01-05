@@ -1,6 +1,13 @@
 from typing import List
 import bisect
 
+"""
+If you choose a job that ends at time `X` you will be
+able to start another job that starts at time `X`.
+
+-> bisect_right
+"""
+
 
 class Solution:
     # fmt: off

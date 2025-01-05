@@ -2,8 +2,10 @@ from typing import List
 import bisect
 
 """
-Be cautious about whether the interval length can be zero,
-as it will affect whether to use `bisect_left` or `bisect_right`.
+Two intervals are said to be non-overlapping if they do not share any points.
+In particular, intervals sharing a left or right boundary are considered overlapping.
+
+-> bisect_left
 """
 
 class Solution:
