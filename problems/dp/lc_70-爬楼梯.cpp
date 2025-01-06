@@ -1,5 +1,4 @@
-#include <bits/stdc++.h>
-
+// clang-format off
 namespace sol1 {
 
 class Solution {
@@ -16,11 +15,4 @@ class Solution {
 };
 
 }  // namespace sol1
-
-namespace sol2 {
-
-/**
- * 矩阵快速幂
- */
-
-}  // namespace sol2
+// clang-format on
