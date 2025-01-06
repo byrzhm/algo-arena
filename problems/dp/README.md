@@ -25,6 +25,15 @@
 - [ ] [213. House Robber II](https://leetcode.cn/problems/house-robber-ii/)
 - [ ] [3186. Maximum Total Damage With Spell Casting](https://leetcode.cn/problems/maximum-total-damage-with-spell-casting/)
 
+### Maximum Subarray
+
+- [ ] [53. Maximum Subarray](https://leetcode.cn/problems/maximum-subarray/)
+- [ ] [2606. Find the Substring With Maximum Cost](https://leetcode.cn/problems/find-the-substring-with-maximum-cost/)
+- [ ] [1749. Maximum Absolute Sum of Any Subarray](https://leetcode.cn/problems/maximum-absolute-sum-of-any-subarray/)
+- [ ] [1191. K-Concatenation Maximum Sum](https://leetcode.cn/problems/k-concatenation-maximum-sum/)
+- [ ] [918. Maximum Sum Circular Subarray](https://leetcode.cn/problems/maximum-sum-circular-subarray/)
+- [ ] [2321. Maximum Score Of Spliced Array](https://leetcode.cn/problems/maximum-score-of-spliced-array/)
+
 ### Maximum Profit in Job Scheduling
 
 - [x] [LC 1235. Maximum Profit in Job Scheduling](https://leetcode.cn/problems/maximum-profit-in-job-scheduling/)
