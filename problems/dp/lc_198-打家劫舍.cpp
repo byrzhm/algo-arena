@@ -1,15 +1,17 @@
-#include <bits/stdc++.h>
+#include <vector>
+using std::vector;
 
+// clang-format off
 class Solution {
  public:
-  int rob(std::vector<int> &nums) {
+  int rob(vector<int> &nums) {
     if (nums.size() == 1) {
       return nums[0];
     }
 
     // dp[i] 表示只有前i间屋子时, 偷第i间屋子能偷窃到的最高总金额
     // dp[n] = max{dp[i]} ( 0<=i<=n-2 ) + nums[n]
-    std::vector<int> dp(nums.size());
+    vector<int> dp(nums.size());
     dp[0] = nums[0];
     dp[1] = nums[1];
 
@@ -22,3 +24,4 @@ class Solution {
     return std::max(dp[nums.size() - 1], dp[nums.size() - 2]);
   }
 };
+// clang-format on

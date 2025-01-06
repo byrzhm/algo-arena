@@ -19,11 +19,11 @@
 
 ### House Robber
 
-- [ ] [198. House Robber](https://leetcode.cn/problems/house-robber/)
-- [ ] [740. Delete and Earn](https://leetcode.cn/problems/delete-and-earn/)
-- [ ] [2320. Count Number of Ways to Place Houses](https://leetcode.cn/problems/count-number-of-ways-to-place-houses/)
-- [ ] [213. House Robber II](https://leetcode.cn/problems/house-robber-ii/)
-- [ ] [3186. Maximum Total Damage With Spell Casting](https://leetcode.cn/problems/maximum-total-damage-with-spell-casting/)
+- [x] [198. House Robber](https://leetcode.cn/problems/house-robber/)
+- [x] [740. Delete and Earn](https://leetcode.cn/problems/delete-and-earn/)
+- [x] [2320. Count Number of Ways to Place Houses](https://leetcode.cn/problems/count-number-of-ways-to-place-houses/)
+- [x] [213. House Robber II](https://leetcode.cn/problems/house-robber-ii/)
+- [x] [3186. Maximum Total Damage With Spell Casting](https://leetcode.cn/problems/maximum-total-damage-with-spell-casting/)
 
 ### Maximum Subarray
 
