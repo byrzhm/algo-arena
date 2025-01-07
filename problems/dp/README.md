@@ -27,11 +27,11 @@
 
 ### Maximum Subarray
 
-- [ ] [53. Maximum Subarray](https://leetcode.cn/problems/maximum-subarray/)
-- [ ] [2606. Find the Substring With Maximum Cost](https://leetcode.cn/problems/find-the-substring-with-maximum-cost/)
-- [ ] [1749. Maximum Absolute Sum of Any Subarray](https://leetcode.cn/problems/maximum-absolute-sum-of-any-subarray/)
-- [ ] [1191. K-Concatenation Maximum Sum](https://leetcode.cn/problems/k-concatenation-maximum-sum/)
-- [ ] [918. Maximum Sum Circular Subarray](https://leetcode.cn/problems/maximum-sum-circular-subarray/)
+- [x] [53. Maximum Subarray](https://leetcode.cn/problems/maximum-subarray/)
+- [x] [2606. Find the Substring With Maximum Cost](https://leetcode.cn/problems/find-the-substring-with-maximum-cost/)
+- [x] [1749. Maximum Absolute Sum of Any Subarray](https://leetcode.cn/problems/maximum-absolute-sum-of-any-subarray/)
+- [x] [1191. K-Concatenation Maximum Sum](https://leetcode.cn/problems/k-concatenation-maximum-sum/)
+- [x] [918. Maximum Sum Circular Subarray](https://leetcode.cn/problems/maximum-sum-circular-subarray/)
 - [ ] [2321. Maximum Score Of Spliced Array](https://leetcode.cn/problems/maximum-score-of-spliced-array/)
 
 ### Maximum Profit in Job Scheduling
