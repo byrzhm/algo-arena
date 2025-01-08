@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include <vector>
 
 namespace sol1 {
 

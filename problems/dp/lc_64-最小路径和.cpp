@@ -1,5 +1,6 @@
-#include <bits/stdc++.h>
+#include <vector>
 
+// clang-format off
 class Solution {
  public:
   int minPathSum(std::vector<std::vector<int>> &grid) {
@@ -19,3 +20,4 @@ class Solution {
     return dp[m - 1][n - 1];
   }
 };
+// clang-format on
