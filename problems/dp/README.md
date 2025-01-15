@@ -50,13 +50,13 @@
 - [x] [1301. Number of Paths with Max Score](https://leetcode.cn/problems/number-of-paths-with-max-score/description/)
 - [x] [2435. Paths in Matrix Whose Sum Is Divisible by K](https://leetcode.cn/problems/paths-in-matrix-whose-sum-is-divisible-by-k/)
 - [x] [174. Dungeon Game](https://leetcode.cn/problems/dungeon-game/description/)
-- [ ] [329. Longest Increasing Path in a Matrix](https://leetcode.cn/problems/longest-increasing-path-in-a-matrix/description/)
-- [ ] [2328. Number of Increasing Paths in a Grid](https://leetcode.cn/problems/number-of-increasing-paths-in-a-grid/description/)
-- [ ] [2267. Check if There Is a Valid Parentheses String Path](https://leetcode.cn/problems/check-if-there-is-a-valid-parentheses-string-path/description/)
-- [ ] [1937. Maximum Number of Points with Cost](https://leetcode.cn/problems/maximum-number-of-points-with-cost/description/)
-- [ ] [3363. Find the Maximum Number of Fruits Collected](https://leetcode.cn/problems/find-the-maximum-number-of-fruits-collected/description/)
-- [ ] [1463. Cherry Pickup II](https://leetcode.cn/problems/cherry-pickup-ii/description/)
-- [ ] [741. Cherry Pickup](https://leetcode.cn/problems/cherry-pickup/description/)
+- [x] [329. Longest Increasing Path in a Matrix](https://leetcode.cn/problems/longest-increasing-path-in-a-matrix/description/)
+- [x] [2328. Number of Increasing Paths in a Grid](https://leetcode.cn/problems/number-of-increasing-paths-in-a-grid/description/)
+- [x] [2267. Check if There Is a Valid Parentheses String Path](https://leetcode.cn/problems/check-if-there-is-a-valid-parentheses-string-path/description/)
+- [x] [1937. Maximum Number of Points with Cost](https://leetcode.cn/problems/maximum-number-of-points-with-cost/description/)
+- [x] [3363. Find the Maximum Number of Fruits Collected](https://leetcode.cn/problems/find-the-maximum-number-of-fruits-collected/description/)
+- [x] [1463. Cherry Pickup II](https://leetcode.cn/problems/cherry-pickup-ii/description/)
+- [x] [741. Cherry Pickup](https://leetcode.cn/problems/cherry-pickup/description/)
 
 ### Maximum Profit in Job Scheduling
 
