@@ -1,7 +1,10 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+
 
 namespace bruteforce {
 
+// clang-format off
 class Solution {
  public:
   int search(std::vector<int> &nums, int target) {
@@ -13,11 +16,13 @@ class Solution {
     return -1;
   }
 };
+// clang-format on
 
 }  // namespace bruteforce
 
 namespace smart_binary_search {
 
+// clang-format off
 class Solution {
  public:
   int search(std::vector<int> &nums, int target) {
@@ -92,11 +97,13 @@ class Solution {
     return -1;
   }
 };
+// clang-format on
 
 }  // namespace smarter_binary_search
 
-int main() {
+int main()
+{
   std::vector<int> nums = {5, 1, 3};
-  int target = 3;
-  std::cout << smarter_binary_search::Solution().search(nums, target) << std::endl;
+  int target            = 3;
+  std::cout << smarter_binary_search::Solution().search(nums, target) << '\n';
 }
