@@ -1,5 +1,12 @@
-#include <bits/stdc++.h>
+#include <algorithm>
+#include <functional>
+#include <ranges> // IWYU pragma: keep
+#include <unordered_set>
+#include <vector>
 
+namespace hash {
+
+// clang-format off
 class Solution {
  public:
   std::vector<std::vector<int>> subsetsWithDup(std::vector<int> &nums) {
@@ -39,3 +46,81 @@ class Solution {
     return subsets;
   }
 };
+// clang-format on
+
+}  // namespace hash
+
+
+namespace smart {
+
+using std::vector;
+namespace ranges = std::ranges;
+
+// clang-format off
+class Solution {
+  vector<vector<int>> ans;
+  vector<int> path;
+  int n;
+public:
+  vector<vector<int>> subsetsWithDup(vector<int> &nums) {
+    n = nums.size();
+    ranges::sort(nums);
+    dfs(0, nums);
+    return ans;
+  }
+
+  void dfs(int i, vector<int> &nums) {
+    if (i == n) {
+      ans.push_back(path);
+      return;
+    }
+
+    int x = nums[i];
+    int j = i + 1;
+    while (j < n && nums[j] == x) ++j;
+    dfs(j, nums);
+
+    path.push_back(x);
+    dfs(i + 1, nums);
+    path.pop_back();
+  }
+};
+// clang-format on
+
+}  // namespace smart
+
+namespace lambda {
+
+using std::vector;
+namespace ranges = std::ranges;
+
+// clang-format off
+class Solution {
+public:
+  vector<vector<int>> subsetsWithDup(vector<int> &nums) {
+    vector<vector<int>> ans;
+    vector<int> path;
+    int n = nums.size();
+    ranges::sort(nums);
+    auto dfs = [&](auto&& dfs, int i) {
+      if (i == n) {
+        ans.push_back(path);
+        return;
+      }
+
+      int x = nums[i];
+      int j = i + 1;
+      while (j < n && nums[j] == x) ++j;
+      dfs(dfs, j);
+
+      path.push_back(x);
+      dfs(dfs, i + 1);
+      path.pop_back();
+    };
+    dfs(dfs, 0);
+    return ans;
+  }
+};
+// clang-format on
+
+}  // namespace lambda
