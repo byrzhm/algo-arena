@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/problem-sets/algs4-princeton-cpp" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/problem-sets/leetcode-hot100/python" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/problem-sets/leetcode-hot100/rust" vcs="Git" />
+  </component>
+</project>
