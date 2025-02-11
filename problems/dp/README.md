@@ -58,6 +58,14 @@
 - [x] [1463. Cherry Pickup II](https://leetcode.cn/problems/cherry-pickup-ii/description/)
 - [x] [741. Cherry Pickup](https://leetcode.cn/problems/cherry-pickup/description/)
 
+### Knapsack
+
+- [x] [2915. Length of the Longest Subsequence That Sums to Target](https://leetcode.cn/problems/length-of-the-longest-subsequence-that-sums-to-target/description/)
+- [ ] [416. Partition Equal Subset Sum](https://leetcode.cn/problems/partition-equal-subset-sum/description/)
+- [ ] [494. Target Sum](https://leetcode.cn/problems/target-sum/description/)
+- [ ] [2787. Ways to Express an Integer as Sum of Powers](https://leetcode.cn/problems/ways-to-express-an-integer-as-sum-of-powers/description/)
+- [ ] [3180. Maximum Total Reward Using Operations I](https://leetcode.cn/problems/maximum-total-reward-using-operations-i/description/)
+
 ### Maximum Profit in Job Scheduling
 
 - [x] [LC 1235. Maximum Profit in Job Scheduling](https://leetcode.cn/problems/maximum-profit-in-job-scheduling/)
