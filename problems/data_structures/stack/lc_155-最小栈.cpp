@@ -1,4 +1,6 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <memory>
+#include <stack>
 
 class MinStack
 {

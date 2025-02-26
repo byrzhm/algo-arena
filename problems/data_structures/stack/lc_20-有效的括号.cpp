@@ -1,4 +1,6 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <stack>
+#include <string>
 
 class Solution
 {

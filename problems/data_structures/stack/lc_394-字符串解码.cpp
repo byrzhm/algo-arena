@@ -1,4 +1,6 @@
-#include <bits/stdc++.h>
+#include <ranges>
+#include <stack>
+#include <string>
 
 class Solution
 {
@@ -29,8 +31,8 @@ public:
         int num = std::stoi(numStr);
 
         for (int i = 0; i < num; ++i) {
-          for (auto it = sub.rbegin(); it != sub.rend(); ++it) {
-            stack.push(*it);
+          for (char &it : std::ranges::reverse_view(sub)) {
+            stack.push(it);
           }
         }
       }
