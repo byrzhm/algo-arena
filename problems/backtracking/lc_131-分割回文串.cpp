@@ -1,16 +1,22 @@
-#include <bits/stdc++.h>
+#include <functional>
+#include <string>
+#include <vector>
+using std::function;
+using std::string;
+using std::vector;
 
+// clang-format off
 class Solution {
  public:
-  std::vector<std::vector<std::string>> partition(const std::string &s) {
-    std::vector<std::vector<std::string>> results;
-    std::vector<std::string> splits;
+    vector<vector<string>> partition(const string &s) {
+    vector<vector<string>> results;
+    vector<string> splits;
     auto isPalindrome = [&](int begin, int end) -> bool {
       for (; begin <= end && s[begin] == s[end]; ++begin, --end)
         ;
       return begin > end;
     };
-    std::function<void(int)> backtracking = [&](int step) {
+    function<void(int)> backtracking = [&](int step) {
       if (step == s.size()) {  // 刚好分割完
         results.emplace_back(splits);
         return;
@@ -28,3 +34,4 @@ class Solution {
     return results;
   }
 };
+// clang-format on
