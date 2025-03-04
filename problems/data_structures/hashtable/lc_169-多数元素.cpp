@@ -1,14 +1,19 @@
-#include <bits/stdc++.h>
+#include <algorithm>
+#include <unordered_map>
+#include <vector>
+using std::unordered_map;
+using std::vector;
+namespace ranges = std::ranges;
 
 namespace hashmap {
 
 class Solution
 {
 public:
-  int majorityElement(std::vector<int> &nums)
+  int majorityElement(vector<int> &nums)
   {
     int major = nums[0];
-    std::unordered_map<int, int> hashMap;
+    unordered_map<int, int> hashMap;
     for (int num : nums) {
       hashMap[num]++;
     }
@@ -29,7 +34,7 @@ namespace Boyer_Moore {
 class Solution
 {
 public:
-  int majorityElement(std::vector<int> &nums)
+  int majorityElement(vector<int> &nums)
   {
     int candidate;
     int count = 0;
@@ -44,3 +49,17 @@ public:
 };
 
 }  // namespace Boyer_Moore
+
+namespace sort {
+
+class Solution
+{
+public:
+  int majorityElement(vector<int> &nums)
+  {
+    ranges::sort(nums);
+    return nums[nums.size() / 2];
+  }
+};
+
+}  // namespace sort
