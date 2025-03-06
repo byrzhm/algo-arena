@@ -7,3 +7,6 @@
 [submodule "problem-sets/algs4-princeton-cpp"]
 	path = problem-sets/algs4-princeton-cpp
 	url = git@github.com:byrzhm/algs4-princeton-cpp.git
+[submodule "problem-sets/go-algo"]
+	path = problem-sets/go-algo
+	url = git@github.com:byrzhm/go-algo.git
