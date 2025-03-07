@@ -1,9 +1,6 @@
 [submodule "hot100/rust"]
 	path = problem-sets/leetcode-hot100/rust
 	url = git@github.com:byrzhm/leetcode-hot100-rust.git
-[submodule "hot100/python"]
-	path = problem-sets/leetcode-hot100/python
-	url = git@github.com:byrzhm/leetcode-hot100-python.git
 [submodule "problem-sets/go-algo"]
 	path = problem-sets/go-algo
 	url = git@github.com:byrzhm/go-algo.git
