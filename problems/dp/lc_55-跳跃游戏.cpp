@@ -1,9 +1,10 @@
-#include <bits/stdc++.h>
+#include <vector>
+using std::vector;
 
 class Solution
 {
 public:
-  bool canJump(std::vector<int> &nums)
+  bool canJump(vector<int> &nums)
   {
     auto rightmost = nums.begin();
     for (auto iter = nums.begin(); iter != nums.end(); ++iter) {
