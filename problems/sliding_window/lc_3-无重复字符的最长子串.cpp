@@ -15,7 +15,7 @@ public:
     int i = 0, j = 0;
     int maxLen = 0;
     while (j < n) {
-      while (set.count(s[j]) > 0) {
+      while (set.contains(s[j])) {
         set.erase(s[i++]);
       }
       set.insert(s[j]);
